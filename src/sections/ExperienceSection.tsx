@@ -30,7 +30,7 @@ export function ExperienceSection() {
         </motion.div>
 
         <motion.div
-          className="fun-timeline"
+          className="editorial-records"
           variants={staggerContainer}
           initial={reduceMotion ? false : 'hidden'}
           whileInView={reduceMotion ? undefined : 'visible'}
@@ -42,29 +42,30 @@ export function ExperienceSection() {
             const companyName = company ?? 'Company'
 
             return (
-              <motion.article key={`${item.period}-${item.title}`} className="fun-timeline-item" variants={fadeInUp}>
-                <aside className="chronicle-aside">
-                  <span className="fun-period-badge">{item.period}</span>
-                  <div className="brand-logo-wrap timeline-brand-logo-wrap">
+              <motion.article key={`${item.period}-${item.title}`} className="editorial-entry" variants={fadeInUp}>
+                <div className="entry-year">
+                  <span className="entry-period">{item.period}</span>
+                </div>
+                <div className="entry-body">
+                  <div className="entry-title-row">
+                    <h3 className="entry-role">{role}</h3>
                     {logo ? (
-                      <img
-                        className="brand-logo"
-                        src={logo}
-                        alt={`${companyName} logo`}
-                        loading="lazy"
-                        decoding="async"
-                      />
+                      <div className="entry-logo-wrap">
+                        <img
+                          className="brand-logo"
+                          src={logo}
+                          alt={`${companyName} logo`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
                     ) : (
-                      <span className="brand-logo-fallback">{companyName}</span>
+                      <span className="entry-logo-text">{companyName}</span>
                     )}
                   </div>
-                </aside>
-
-                <div className="chronicle-main">
-                  <h3 className="timeline-title">{role}</h3>
-                  <p className="timeline-company">{companyName}</p>
-                  <p className="timeline-summary">{item.summary}</p>
-                  <ul className="timeline-points">
+                  <p className="entry-company">{companyName}</p>
+                  <p className="entry-summary">{item.summary}</p>
+                  <ul className="entry-points">
                     {item.points.map((point, index) => (
                       <li key={`${item.title}-${index}`}>{point}</li>
                     ))}

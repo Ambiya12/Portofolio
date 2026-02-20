@@ -34,34 +34,36 @@ export function SchoolSection() {
             </p>
           </motion.div>
 
-          <motion.div className="school-grid" variants={staggerContainer}>
+          <motion.div className="editorial-records" variants={staggerContainer}>
             {schoolHistory.map((item) => {
               const logo = getSchoolLogo(item.institution)
 
               return (
                 <motion.article
                   key={`${item.period}-${item.institution}`}
-                  className="school-card"
+                  className="editorial-entry"
                   variants={fadeInUp}
                 >
-                  <aside className="chronicle-aside school-chronicle-aside">
-                    <div className="school-period">{item.period}</div>
-                    {logo && (
-                      <div className="brand-logo-wrap school-brand-logo-wrap">
-                        <img
-                          className="brand-logo"
-                          src={logo}
-                          alt={`${item.institution} logo`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    )}
-                  </aside>
-                  <div className="chronicle-main school-chronicle-main">
-                    <h3 className="school-institution">{item.institution}</h3>
-                    <div className="school-degree">{item.degree}</div>
-                    <ul className="school-details">
+                  <div className="entry-year">
+                    <span className="entry-period">{item.period}</span>
+                  </div>
+                  <div className="entry-body">
+                    <div className="entry-title-row">
+                      <h3 className="entry-role">{item.institution}</h3>
+                      {logo && (
+                        <div className="entry-logo-wrap">
+                          <img
+                            className="brand-logo"
+                            src={logo}
+                            alt={`${item.institution} logo`}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <p className="entry-company">{item.degree}</p>
+                    <ul className="entry-points">
                       {item.details.map((point, idx) => (
                         <li key={idx}>{point}</li>
                       ))}
