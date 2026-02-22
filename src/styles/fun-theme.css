@@ -545,3 +545,257 @@
     gap: 0.85rem;
   }
 }
+
+/* ── EXPERIENCE / SCHOOL TIMELINE REDESIGN ── */
+
+.exp-timeline {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each card row: dot column + card content */
+.exp-card {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0 clamp(1.2rem, 2.5vw, 2rem);
+  position: relative;
+}
+
+/* Dot + vertical line column */
+.exp-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.25rem;
+}
+
+.exp-dot {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-soft);
+  background: var(--surface);
+  z-index: 1;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.exp-dot--active {
+  border-color: var(--ink);
+  background: var(--ink);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.exp-line {
+  flex: 1;
+  width: 1px;
+  background: var(--border-strong);
+  margin-top: 0.45rem;
+  margin-bottom: -0.5rem;
+  min-height: 2.5rem;
+}
+
+/* Hide line after last card */
+.exp-card:last-child .exp-line {
+  display: none;
+}
+
+/* Card inner content */
+.exp-card-inner {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: clamp(1.4rem, 2.5vw, 2rem);
+  margin-bottom: clamp(1.2rem, 2.5vw, 1.75rem);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.exp-card-inner:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.055);
+}
+
+/* Top meta: period + status badge */
+.exp-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.exp-period {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.exp-badge-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 100px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.exp-badge-current::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6ee7b7;
+  flex-shrink: 0;
+}
+
+/* Header: role title + logo */
+.exp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.exp-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.exp-role {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0;
+}
+
+.exp-company-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.exp-logo-wrap {
+  flex-shrink: 0;
+  width: clamp(72px, 8vw, 110px);
+  height: 36px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-logo-wrap--school {
+  width: clamp(72px, 8vw, 90px);
+  height: 42px;
+  border-radius: 4px;
+}
+
+.exp-logo-fallback {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+/* Location row */
+.exp-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  font-weight: 500;
+  margin: 0 0 0.85rem;
+}
+
+.exp-location svg {
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+/* Description */
+.exp-description {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.72;
+  margin: 0 0 1.15rem;
+  max-width: 72ch;
+}
+
+/* Points list */
+.exp-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.exp-point-item {
+  display: flex;
+  gap: 0.65rem;
+  align-items: baseline;
+  font-size: 0.875rem;
+  line-height: 1.58;
+}
+
+.exp-point-cat {
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--surface);
+  background: var(--ink);
+  padding: 0.15rem 0.45rem;
+  white-space: nowrap;
+  line-height: 1.8;
+}
+
+.exp-point-text {
+  color: var(--ink-mid);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .exp-card {
+    grid-template-columns: 24px 1fr;
+    gap: 0 0.75rem;
+  }
+
+  .exp-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .exp-header {
+    flex-wrap: wrap;
+  }
+
+  .exp-point-item {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}

@@ -14,14 +14,14 @@ const WORDS = [
 ]
 
 export function Marquee() {
-  // Duplicate 4× so the seamless loop has plenty of content
-  const items = [...WORDS, ...WORDS, ...WORDS, ...WORDS]
+  // Duplicate 2× so the seamless loop has enough content
+  const items = [...WORDS, ...WORDS]
 
   return (
     <div className="marquee-band" aria-hidden="true">
       <div className="marquee-track">
         {items.map((word, i) => (
-          <span key={i} className="marquee-item">
+          <span key={`${word}-${i}`} className="marquee-item">
             {word}
             <span className="marquee-dot">·</span>
           </span>

@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '../lib/motion'
+import { SectionHeader } from '../components/SectionHeader'
 
 const mindsetItems = [
   {
@@ -31,17 +32,13 @@ export function MindsetSection() {
     <section id="mindset" className="fun-section fun-bg-rose">
       <span className="fun-shape fun-shape--bottom" aria-hidden="true" />
       <div className="container">
-        <motion.div
-          className="fun-heading"
-          variants={fadeInUp}
-          initial={reduceMotion ? false : 'hidden'}
-          whileInView={reduceMotion ? undefined : 'visible'}
-          viewport={{ once: true, amount: 0.35 }}
-        >
-          <span className="fun-eyebrow">Approach</span>
-          <h2 className="fun-title">Engineering <span className="fun-accent">Principles</span>.</h2>
-          <p className="fun-subtitle">Long-term technical practice beyond short-term feature output.</p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Approach"
+          titleStart="Engineering"
+          titleAccent="Principles"
+          titleEnd="."
+          subtitle="Long-term technical practice beyond short-term feature output."
+        />
 
         <motion.div
           className="fun-grid"

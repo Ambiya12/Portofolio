@@ -1,6 +1,7 @@
 import type { FormEvent } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { fadeInUp } from '../lib/motion'
+import { SectionHeader } from '../components/SectionHeader'
 
 const CONTACT_EMAIL = 'ambiyadms@gmail.com'
 
@@ -31,14 +32,13 @@ export function ContactSection() {
           whileInView={reduceMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="fun-heading">
-            <span className="fun-eyebrow">Contact</span>
-            <h2 className="fun-title">Start a <span className="fun-accent">Conversation</span>.</h2>
-          </div>
-          <p className="fun-subtitle">
-            Open to opportunities where architecture clarity, collaboration,
-            and delivery quality are priorities.
-          </p>
+          <SectionHeader
+            eyebrow="Contact"
+            titleStart="Start a"
+            titleAccent="Conversation"
+            titleEnd="."
+            subtitle="Open to opportunities where architecture clarity, collaboration, and delivery quality are priorities."
+          />
 
           <div className="contact-links">
             <a href={`mailto:${CONTACT_EMAIL}`} className="fun-button">Email</a>

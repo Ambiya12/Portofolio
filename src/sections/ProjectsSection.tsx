@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { projects } from '../data/projects'
 import { fadeInUp, staggerContainer } from '../lib/motion'
+import { SectionHeader } from '../components/SectionHeader'
 
 export function ProjectsSection() {
   const reduceMotion = useReducedMotion()
@@ -9,19 +10,13 @@ export function ProjectsSection() {
     <section id="projects" className="fun-section fun-bg-blue">
       <span className="fun-shape fun-shape--top" aria-hidden="true" />
       <div className="container">
-        <motion.div
-          className="fun-heading"
-          variants={fadeInUp}
-          initial={reduceMotion ? false : 'hidden'}
-          whileInView={reduceMotion ? undefined : 'visible'}
-          viewport={{ once: true, amount: 0.35 }}
-        >
-          <span className="fun-eyebrow">Projects</span>
-          <h2 className="fun-title">Built for <span className="fun-accent">real-world</span> constraints.</h2>
-          <p className="fun-subtitle">
-            Focused on scalable outcomes and user experience.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Projects"
+          titleStart="Built for"
+          titleAccent="real-world"
+          titleEnd="constraints."
+          subtitle="Focused on scalable outcomes and user experience."
+        />
 
         <motion.div
           className="fun-grid"

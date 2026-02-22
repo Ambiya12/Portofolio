@@ -1,6 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { schoolHistory } from '../data/school'
-import { fadeInUp, staggerContainer } from '../lib/motion'
+import { staggerContainer } from '../lib/motion'
+import { parseCategoryString } from '../lib/utils'
+import { SectionHeader } from '../components/SectionHeader'
+import { TimelineCard } from '../components/TimelineCard'
 import heticLogo from '../assets/Hetic.jpg'
 import academy3wLogo from '../assets/3WAcademy.jpg'
 import upcLogo from '../assets/UniversiteParisCite.jpg'
@@ -25,50 +28,29 @@ export function SchoolSection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
         >
-          <motion.div variants={fadeInUp} className="fun-heading">
-            <span className="fun-eyebrow">Education</span>
-            <h2 className="fun-title">Education <span className="fun-accent">Record</span></h2>
-            <p className="fun-subtitle">
-              Formal training in software engineering and web design.
-            </p>
-          </motion.div>
+          <SectionHeader
+            eyebrow="Education"
+            titleStart="Education"
+            titleAccent="Record"
+            subtitle="Formal training in software engineering and web design."
+          />
 
-          <motion.div className="editorial-records" variants={staggerContainer}>
+          <motion.div className="exp-timeline" variants={staggerContainer}>
             {schoolHistory.map((item) => {
               const logo = getSchoolLogo(item.institution)
+              const parsed = item.details.map((d) => parseCategoryString(d, 28))
 
               return (
-                <motion.article
+                <TimelineCard
                   key={`${item.period}-${item.institution}`}
-                  className="editorial-entry"
-                  variants={fadeInUp}
-                >
-                  <div className="entry-year">
-                    <span className="entry-period">{item.period}</span>
-                  </div>
-                  <div className="entry-body">
-                    <div className="entry-title-row">
-                      <h3 className="entry-role">{item.institution}</h3>
-                      {logo && (
-                        <div className="entry-logo-wrap">
-                          <img
-                            className="brand-logo"
-                            src={logo}
-                            alt={`${item.institution} logo`}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        </div>
-                      )}
-                    </div>
-                    <p className="entry-company">{item.degree}</p>
-                    <ul className="entry-points">
-                      {item.details.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.article>
+                  period={item.period}
+                  title={item.institution}
+                  subtitle={item.degree}
+                  logo={logo}
+                  logoAlt={`${item.institution} logo`}
+                  isSchoolLogo={true}
+                  points={parsed}
+                />
               )
             })}
           </motion.div>

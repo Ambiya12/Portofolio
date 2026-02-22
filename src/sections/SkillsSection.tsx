@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { skillGroups } from '../data/skills'
 import { fadeInUp, staggerContainer } from '../lib/motion'
+import { SectionHeader } from '../components/SectionHeader'
 
 export function SkillsSection() {
   const reduceMotion = useReducedMotion()
@@ -9,17 +10,13 @@ export function SkillsSection() {
     <section id="skills" className="fun-section fun-bg-lavender">
       <span className="fun-shape fun-shape--top" aria-hidden="true" />
       <div className="container">
-        <motion.div
-          className="fun-heading"
-          variants={fadeInUp}
-          initial={reduceMotion ? false : 'hidden'}
-          whileInView={reduceMotion ? undefined : 'visible'}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <span className="fun-eyebrow">Technical Skills</span>
-          <h2 className="fun-title">Cross-stack <span className="fun-accent">capabilities</span>.</h2>
-          <p className="fun-subtitle">Structured knowledge across frontend, backend, DevOps, and management tooling.</p>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Technical Skills"
+          titleStart="Cross-stack"
+          titleAccent="capabilities"
+          titleEnd="."
+          subtitle="Structured knowledge across frontend, backend, DevOps, and management tooling."
+        />
 
         <motion.div
           className="skills-grid"
