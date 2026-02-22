@@ -4,7 +4,6 @@ import { fadeInUp, staggerContainer } from '../lib/motion'
 import heticLogo from '../assets/Hetic.jpg'
 import academy3wLogo from '../assets/3WAcademy.jpg'
 import upcLogo from '../assets/UniversiteParisCite.jpg'
-import '../styles/school.css'
 
 function getSchoolLogo(institution: string) {
   if (institution.includes('HETIC')) return heticLogo
